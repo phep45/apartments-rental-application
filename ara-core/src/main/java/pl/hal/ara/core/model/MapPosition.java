@@ -1,4 +1,4 @@
-package pl.hal.ara.model;
+package pl.hal.ara.core.model;
 
 
 public class MapPosition {

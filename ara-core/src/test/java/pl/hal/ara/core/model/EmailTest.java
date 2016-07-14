@@ -1,4 +1,4 @@
-package pl.hal.ara.model;
+package pl.hal.ara.core.model;
 
 
 import org.junit.Assert;
@@ -16,7 +16,7 @@ public class EmailTest {
     @Test
     public void shouldCreateEmail() {
         Email email = new Email(PROPER_EMAIL_STRING);
-        Assert.assertThat(email.getEmail(), is(PROPER_EMAIL_STRING));
+        Assert.assertThat(email.asString(), is(PROPER_EMAIL_STRING));
         Assert.assertThat(email.getDomain(), is(PROPER_EMAIL_DOMAIN));
         Assert.assertThat(email.getName(), is(PROPER_EMAIL_NAME));
     }

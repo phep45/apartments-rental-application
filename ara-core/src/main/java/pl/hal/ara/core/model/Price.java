@@ -1,4 +1,4 @@
-package pl.hal.ara.model;
+package pl.hal.ara.core.model;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
