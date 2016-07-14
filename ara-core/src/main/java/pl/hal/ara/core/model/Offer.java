@@ -1,7 +1,10 @@
-package pl.hal.ara.model;
+package pl.hal.ara.core.model;
 
+import javax.persistence.Entity;
 
+@Entity
 public class Offer {
+
 
     private Apartment apartment;
     private Price price;
