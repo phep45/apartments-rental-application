@@ -13,33 +13,30 @@ import java.util.Random;
 @Embedded
 public class Password {
     private String pashword;
-    private byte[] salt;
 
     public Password() {}
 
     public Password(String passwordString) {
-        this.pashword = hash(passwordString);
-    }
-
-    private String hash(String password) {
-        try {
-            byte[] salt = new byte[16];
-            new Random().nextBytes(salt);
-            KeySpec spec = new PBEKeySpec("password".toCharArray(), salt, 65536, 128);
-            SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            byte[] hash = f.generateSecret(spec).getEncoded();
-            Base64.Encoder enc = Base64.getEncoder();
-            this.salt = salt;
-            return enc.encodeToString(hash);
-        } catch (InvalidKeySpecException e) {
-            //TODO
-        } catch (NoSuchAlgorithmException e) {
-            //TODO
-        }
-        throw new IllegalStateException();
+        this.pashword = passwordString;
     }
 
     public String getPashword() {
         return pashword;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Password password = (Password) o;
+
+        return pashword.equals(password.pashword);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return pashword.hashCode();
     }
 }
